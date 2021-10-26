@@ -2,7 +2,9 @@ import 'dart:convert';
 
 class FacturaDomicilio {
   int? rowid;
+  int? rowidServicio;
   int? codFactura;
+  String? tipoPedido;
   String? send;
   String? nombreCliente;
   String? numeroTelefono;
@@ -22,7 +24,9 @@ class FacturaDomicilio {
   String? statusFacturacion;
   FacturaDomicilio(
       {this.rowid,
+      this.rowidServicio,
       this.codFactura,
+      this.tipoPedido,
       this.send,
       this.nombreCliente,
       this.numeroTelefono,
@@ -44,7 +48,9 @@ class FacturaDomicilio {
   Map<String, dynamic> toMap() {
     return {
       'rowid': rowid,
+      'rowid_servicio': rowidServicio,
       'codFactura': codFactura,
+      'tipo_pedido': tipoPedido,
       'send': send,
       'nombreCliente': nombreCliente,
       'numeroTelefono': numeroTelefono,
@@ -68,7 +74,9 @@ class FacturaDomicilio {
   factory FacturaDomicilio.fromMap(Map<String, dynamic> map) {
     return FacturaDomicilio(
       rowid: map['rowid'],
+      rowidServicio: map['rowid_servicio'],
       codFactura: map['codFactura'],
+      tipoPedido: map['tipo_pedido'],
       send: map['send'],
       nombreCliente: map['nombreCliente'],
       numeroTelefono: map['numeroTelefono'],

@@ -5,8 +5,7 @@ import 'package:postgres/postgres.dart';
 import '../models/pedidos_model.dart';
 
 Future<PostgreSQLResult> sqlUtils(String sqlcmd) async {
-  final conexion = PostgreSQLConnection(
-      'host.docker.internal', 5432, 'base_prueba',
+  final conexion = PostgreSQLConnection('localhost', 5432, 'base_prueba',
       username: 'postgres', password: '123');
 
   await conexion.open();
@@ -21,6 +20,7 @@ Future<void> insertPedido(Pedido pedido) async {
     rowid,
     rowid_servicio,
     send, 
+    tipo_pedido,
     nombre_cliente, 
     numero_telefono,
     direccion_envio, 
@@ -38,9 +38,10 @@ Future<void> insertPedido(Pedido pedido) async {
     estatus,
     status_facturacion
     ) VALUES(
-      ${pedido.rowidServicio}
+      ${pedido.rowid},
       ${pedido.rowidServicio},
       '${pedido.send}',
+      '${pedido.tipoPedido}',
       '${pedido.nombreCliente}',
       '${pedido.numeroTelefono}',
       '${pedido.direccionEnvio}',

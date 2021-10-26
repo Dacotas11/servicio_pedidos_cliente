@@ -6,6 +6,7 @@ class Pedido {
   int? rowid;
   int? rowidServicio;
   int? codFactura;
+  String? tipoPedido;
   String? send;
   String? nombreCliente;
   String? numeroTelefono;
@@ -26,6 +27,7 @@ class Pedido {
       {this.rowid,
       this.rowidServicio,
       this.codFactura,
+      this.tipoPedido,
       this.send,
       this.nombreCliente,
       this.numeroTelefono,
@@ -48,6 +50,7 @@ class Pedido {
       'rowid': rowid,
       'rowidServicio': rowidServicio,
       'codFactura': codFactura,
+      'tipo_pedido': tipoPedido,
       'send': send,
       'nombreCliente': nombreCliente,
       'numeroTelefono': numeroTelefono,
@@ -72,6 +75,7 @@ class Pedido {
         rowid: map['rowid'],
         rowidServicio: map['rowidServicio'],
         codFactura: map['codFactura'],
+        tipoPedido: map['tipo_pedido'],
         send: map['send'],
         nombreCliente: map['nombreCliente'],
         numeroTelefono: map['numeroTelefono'],
@@ -119,8 +123,10 @@ class Pedido {
 
   factory Pedido.fromFacturaDomicilio(FacturaDomicilio factura) {
     return Pedido(
-      rowidServicio: factura.rowid,
+      rowid: factura.rowid,
+      rowidServicio: factura.rowidServicio,
       codFactura: factura.codFactura,
+      tipoPedido: factura.tipoPedido,
       send: factura.send,
       nombreCliente: factura.nombreCliente,
       numeroTelefono: factura.numeroTelefono,
@@ -266,7 +272,7 @@ class Pedido {
   static List<int> getIdFromList(List<Pedido> list) {
     final ids = <int>[];
     for (var pedido in list) {
-      ids.add(pedido.rowidServicio!);
+      ids.add(pedido.rowid!);
     }
     return ids;
   }

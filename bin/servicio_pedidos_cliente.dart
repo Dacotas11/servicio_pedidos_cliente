@@ -7,7 +7,7 @@ import 'models/factura_domicilio_model.dart';
 import 'models/pedidos_model.dart';
 
 Future<void> main(List<String> arguments) async {
-  final duration = Duration(seconds: 10);
+  final duration = Duration(seconds: 5);
   print('Servicio Iniciado');
 
   Timer.periodic(duration, (timer) async {
@@ -17,6 +17,7 @@ Future<void> main(List<String> arguments) async {
     if (hasFacturas(responseGet.body)) {
       print(DateTime.now());
       final jsonBody = json.decode(responseGet.body);
+      print(jsonBody);
       final facturas =
           FacturaDomicilio.facturaDomicilioFromMapList(jsonBody['facturas']);
       print('${facturas.isEmpty ? facturas : facturas.length}');
